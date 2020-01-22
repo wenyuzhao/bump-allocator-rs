@@ -1,6 +1,6 @@
 [package]
 name = "bump-allocator"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Wenyu Zhao <wenyu.zhao@anu.edu.au>"]
 edition = "2018"
 description = "A high performance `#[global_allocator] implementation using the bump-pointer allocation algorithm"
