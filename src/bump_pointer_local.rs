@@ -11,7 +11,9 @@ pub struct BumpPointerLocal {
 }
 
 impl BumpPointerLocal {
-    pub const THREAD_LOCAL_BUFFER_SIZE: usize = 32 * 1024; // 32KB
+    const LOG_BLOCK_SIZE: usize = 15;
+    const BLOCK_SIZE: usize = 1 << Self::LOG_BLOCK_SIZE; // 32KB
+    const BLOCK_MASK: usize = Self::BLOCK_SIZE - 1;
 
     pub const fn new() -> Self {
         Self { cursor: 0 as _, limit: 0 as _ }
@@ -39,10 +41,11 @@ impl BumpPointerLocal {
 
     #[inline(always)]
     fn alloc_slow_inline(&mut self, bytes: usize, align: usize) -> *mut u8 {
-        self.cursor = unsafe { libc::memalign(Self::THREAD_LOCAL_BUFFER_SIZE, Self::THREAD_LOCAL_BUFFER_SIZE) as _ };
-        unsafe { libc::memset(self.cursor as _, 0, Self::THREAD_LOCAL_BUFFER_SIZE) };
+        let size = (bytes + Self::BLOCK_MASK) & !Self::BLOCK_MASK;
+        self.cursor = unsafe { libc::memalign(Self::BLOCK_SIZE, size) as _ };
+        unsafe { libc::memset(self.cursor as _, 0, size) };
         assert!(self.cursor != 0 as _);
-        self.limit = unsafe { self.cursor.add(Self::THREAD_LOCAL_BUFFER_SIZE) };
+        self.limit = unsafe { self.cursor.add(size) };
         self.alloc(bytes, align)
     }
 
