@@ -4,6 +4,8 @@ A high performance `#[global_allocator]` implementation using the bump-pointer a
 
 ## Usage
 
+As a rust [custom global allocaor](https://doc.rust-lang.org/beta/std/alloc/trait.GlobalAlloc.html):
+
 ```rust
 extern crate bump_allocator;
 
@@ -14,4 +16,13 @@ fn main() {
     // Heap allocations here...
     let _boxed = Box::new(233);
 }
+```
+
+As a `malloc()` replacement:
+
+```bash
+cargo build --release
+LD_PRELOAD=target/release/libbump_allocator.so your_program
+# e.g.
+#   LD_PRELOAD=target/release/libbump_allocator.so ls ~
 ```
