@@ -43,7 +43,6 @@ impl BumpPointerLocal {
     fn alloc_slow_inline(&mut self, bytes: usize, align: usize) -> *mut u8 {
         let size = (bytes + Self::BLOCK_MASK) & !Self::BLOCK_MASK;
         self.cursor = unsafe { libc::memalign(Self::BLOCK_SIZE, size) as _ };
-        unsafe { libc::memset(self.cursor as _, 0, size) };
         assert!(self.cursor != 0 as _);
         self.limit = unsafe { self.cursor.add(size) };
         self.alloc(bytes, align)
