@@ -1,6 +1,6 @@
 # bump-allocator-rs
 
-A high performance `#[global_allocator]` implementation using the bump-pointer allocation algorithm
+A high performance `#[global_allocator]` implementation using the bump-pointer allocation algorithm. It can also be used as a malloc() replacement.
 
 [![Latest version](https://img.shields.io/crates/v/bump-allocator.svg)](https://crates.io/crates/bump-allocator)
 [![License](https://img.shields.io/crates/l/bump-allocator.svg)](https://github.com/wenyuzhao/bump-allocator-rs/LISENCE)
