@@ -2,6 +2,9 @@
 
 A high performance `#[global_allocator]` implementation using the bump-pointer allocation algorithm
 
+[![Latest version](https://img.shields.io/crates/v/bump-allocator.svg)](https://crates.io/crates/bump-allocator)
+[![License](https://img.shields.io/crates/l/bump-allocator.svg)](https://github.com/wenyuzhao/bump-allocator-rs/LISENCE)
+
 ## Usage
 
 As a rust [custom global allocaor](https://doc.rust-lang.org/beta/std/alloc/trait.GlobalAlloc.html):
