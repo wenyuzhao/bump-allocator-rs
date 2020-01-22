@@ -1,0 +1,11 @@
+[package]
+name = "bump-allocator"
+version = "0.1.0"
+authors = ["Wenyu Zhao <wenyu.zhao@anu.edu.au>"]
+edition = "2018"
+description = "A high performance `#[global_allocator] implementation using the bump-pointer allocation algorithm"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+libc = "0.2.66"
