@@ -4,6 +4,10 @@ version = "0.1.0"
 authors = ["Wenyu Zhao <wenyu.zhao@anu.edu.au>"]
 edition = "2018"
 description = "A high performance `#[global_allocator] implementation using the bump-pointer allocation algorithm"
+keywords = ["allocator", "global-allocator", "memory", "bump-pointer"]
+categories = ["memory-management"]
+license = "MIT"
+repository = "https://github.com/wenyuzhao/bump-allocator-rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
